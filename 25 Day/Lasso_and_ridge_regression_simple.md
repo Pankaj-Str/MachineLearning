@@ -91,15 +91,8 @@ print("Ridge weight:", model.coef_)
 
 ## Step 4: Lasso Regression (L1 Regularization)
 
-### What Lasso does
+<img width="1536" height="1024" alt="Lasso Regression (L1 Regularization)" src="https://github.com/user-attachments/assets/12c7629d-e8d9-4d91-b729-83700f7e8e96" />
 
-> Lasso can **reduce coefficients to exactly ZERO**
-
-### Lasso formula idea
-
-[
-\text{Loss} = \text{MSE} + \alpha \sum |w|
-]
 
 ### Effect
 
@@ -154,7 +147,7 @@ print("Lasso weight:", model.coef_)
 
 ---
 
-## Final Beginner Summary (Exam Ready)
+## Final Beginner Summary
 
 > **Ridge Regression** reduces the size of coefficients to prevent overfitting but keeps all features.
 > **Lasso Regression** reduces coefficients and can set some of them to zero, performing feature selection.
