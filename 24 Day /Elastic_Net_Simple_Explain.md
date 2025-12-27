@@ -25,9 +25,8 @@ Elastic Net gives you the benefits of both.
 
 ## Elastic Net objective function
 
-[
-\text{Loss} = \text{MSE} + \alpha \big( \lambda_1 \sum |w| + \lambda_2 \sum w^2 \big)
-]
+<img width="1536" height="1024" alt="#" src="https://github.com/user-attachments/assets/41f6302b-d4b2-4135-ada9-08d9d1601816" />
+
 
 In practice:
 
