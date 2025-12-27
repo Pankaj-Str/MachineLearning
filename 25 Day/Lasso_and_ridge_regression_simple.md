@@ -54,15 +54,9 @@ This is where **regularization** comes in.
 
 ## Step 3: Ridge Regression (L2 Regularization)
 
-### What Ridge does
 
-> Ridge **reduces the size of coefficients**, but **never makes them zero**
+<img width="1536" height="1024" alt="Ridge Regression (L2 Regularization)" src="https://github.com/user-attachments/assets/fd1dc521-1474-418c-a8ef-a556fe04c3b9" />
 
-### Ridge formula idea
-
-[
-\text{Loss} = \text{MSE} + \alpha \sum w^2
-]
 
 ### Effect
 
