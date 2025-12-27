@@ -1,10 +1,7 @@
-## Elastic Net in Machine Learning – Explained in English
+## Elastic Net in Machine Learning 
 
 ![Image](https://scikit-learn.org/1.2/_images/sphx_glr_plot_lasso_coordinate_descent_path_003.png)
 
-![Image](https://www.researchgate.net/publication/389269364/figure/tbl1/AS%3A11431281311548033%401740379584702/The-Comparison-of-Ridge-Regression-LASSO-and-Elastic-Net-in-Effect-and-Benefit-of.png)
-
-![Image](https://i0.wp.com/analyticsarora.com/wp-content/uploads/2022/07/elastic-net-regression-visually-equation-explained-1.png?resize=800%2C600\&ssl=1)
 
 ![Image](https://miro.medium.com/1%2AlNhPbo78vHsvqf7dGdFbDA.jpeg)
 
