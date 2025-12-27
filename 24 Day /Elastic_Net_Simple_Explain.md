@@ -104,3 +104,24 @@ print("Coefficients:", model.coef_)
 > Elastic Net is a regularization technique that combines **Lasso (L1)** and **Ridge (L2)** penalties to reduce overfitting, perform feature selection, and handle correlated features effectively.
 
 
+Here is the **clean, correct formula** (Elastic Net loss function), nicely formatted:
+
+[
+\text{Loss} = \text{MSE} + \alpha \left( \lambda_1 \sum |w| + \lambda_2 \sum w^2 \right)
+]
+
+### Meaning (one-line explanation)
+
+* **MSE** → Mean Squared Error (data fit)
+* **(\alpha)** → overall regularization strength
+* **(\lambda_1 \sum |w|)** → L1 penalty (Lasso part)
+* **(\lambda_2 \sum w^2)** → L2 penalty (Ridge part)
+
+If you want:
+
+* ✅ **handwritten-style image**
+* ✅ **exam-ready short version**
+* ✅ **Elastic Net simplified formula used in sklearn**
+* ✅ **blog-ready formatted section**
+
+tell me 👍
