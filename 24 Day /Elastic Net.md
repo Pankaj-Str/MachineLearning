@@ -7,15 +7,8 @@ Elastic Net is a regularization technique used in linear regression models to pr
 
 Elastic Net uses a mix of both penalties, controlled by a parameter called `rho` (or `l1_ratio`). The formula for the loss function in Elastic Net Regression is:
 
-\[
-\text{Loss} = \frac{1}{2n} \| y - Xw \|^2 + \alpha \rho \| w \|_1 + \frac{\alpha (1 - \rho)}{2} \| w \|^2_2
-\]
+<img width="750" height="279" alt="Screenshot 2025-12-27 at 1 56 55 PM" src="https://github.com/user-attachments/assets/aed162b5-2250-4630-ba1a-39b7139841a8" />
 
-Where:
-- \( \| y - Xw \|^2 \) is the mean squared error (MSE).
-- \( \alpha \) is the overall regularization strength.
-- \( \rho \) controls the balance between L1 and L2 (e.g., \(\rho = 1\) is pure Lasso, \(\rho = 0\) is pure Ridge).
-- \( w \) are the model weights (coefficients).
 
 This is useful when you have many features, some irrelevant or correlated, as it balances shrinkage and sparsity.
 
