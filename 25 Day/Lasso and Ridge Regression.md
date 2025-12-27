@@ -3,14 +3,8 @@
 
 Lasso and Ridge are regularization techniques for linear regression to prevent overfitting, especially with many or correlated features. They add a penalty to the loss function:
 
-- **Ridge Regression (L2 Regularization)**: Penalizes large coefficients by adding the sum of squared coefficients (\( \alpha \| w \|^2_2 \)). It shrinks coefficients but rarely sets them to zero. Good for multicollinearity.
-- **Lasso Regression (L1 Regularization)**: Penalizes by adding the sum of absolute coefficients (\( \alpha \| w \|_1 \)). It can shrink some coefficients to exactly zero, performing feature selection.
+<img width="1536" height="1024" alt="Lasso and Ridge" src="https://github.com/user-attachments/assets/d618e2bb-72dd-4bbd-9ca8-c9510384e860" />
 
-The loss functions are:
-- Ridge: \( \frac{1}{2n} \| y - Xw \|^2 + \frac{\alpha}{2} \| w \|^2_2 \)
-- Lasso: \( \frac{1}{2n} \| y - Xw \|^2 + \alpha \| w \|_1 \)
-
-Where \( \alpha \) controls regularization strength (higher \( \alpha \) = more shrinkage).
 
 We'll use the same simple synthetic dataset as in the Elastic Net example: 100 samples, 5 features, where only 3 are relevant (true coefficients: 1.5, -2.0, 0.0, 0.0, 3.0). This keeps it beginner-friendly and consistent.
 
