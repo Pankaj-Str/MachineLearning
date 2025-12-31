@@ -1,5 +1,5 @@
 
-# **Hierarchical Clustering Example in Python (Step-by-Step Tutorial)**
+# **Hierarchical Clustering**
 
 *Agglomerative Clustering + Dendrogram using Mall Customers Dataset*
 
