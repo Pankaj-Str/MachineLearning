@@ -428,12 +428,6 @@ print(f"New fruit {new_fruit_multi} is: {classes[prediction_multi[0]]}")
 
 ---
 
-## What’s Next?
-You’ve learned SVM theory and applied it with Python! If you want to dive deeper, I can:
-- Share code for a real dataset (e.g., Iris).
-- Explain parameter tuning (e.g., `C`, kernel options).
-- Help visualize non-linear kernels.
 
-Would you like me to generate a diagram of the SVM plot to complement the code? Or would you prefer more examples, like multi-class visualization or another dataset? Let me know how I can make this even better for you!
 
 Happy learning and coding! 😊
