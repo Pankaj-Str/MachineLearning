@@ -1,6 +1,6 @@
 # Mini-Batch K-Means Clustering 
 
-![Image](https://www.researchgate.net/publication/360425852/figure/fig5/AS%3A11431281121921829%401677121391141/a-kmeans-clusters-b-Mini-batch-K-means-clusters.png)
+
 
 ![Image](https://scikit-learn.org/0.16/_images/plot_mini_batch_kmeans_0011.png)
 
