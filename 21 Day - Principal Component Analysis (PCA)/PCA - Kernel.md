@@ -15,8 +15,6 @@ Kernel PCA transforms the data so that the circle becomes separable.
 
 ## Why Normal PCA Fails (Conceptual View)
 
-![Image](https://www.researchgate.net/publication/329160047/figure/fig1/AS%3A962647923118114%401606524558642/Example-of-dimensionality-reduction-of-linear-and-nonlinear-data-by-PCA-The-same.png)
-
 ![Image](https://www.marktechpost.com/wp-content/uploads/2025/12/image-11.png)
 
 ![Image](https://benediktehinger.de/blog/science/upload/sites/2/2017/11/unnamed-chunk-4-1.png)
