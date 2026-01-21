@@ -23,18 +23,7 @@ We can choose different "complexity" levels:
 Here are visual examples (polynomial curve fitting):
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="953" height="557" alt="Screenshot 2026-01-21 at 8 03 50 AM" src="https://github.com/user-attachments/assets/74111af7-b644-4972-b499-fb003acb8252" />
 
 
 **Left image / low degree (degree 1)** → Underfitting (straight line can't capture the curve)  
