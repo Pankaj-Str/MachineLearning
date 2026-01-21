@@ -1,4 +1,4 @@
-# Overfitting** and **Underfitting
+# Overfitting and Underfitting
 **Overfitting** and **Underfitting** are two very common problems when we train machine learning models.
 
 Think of it like this simple school analogy:
