@@ -46,10 +46,7 @@ Here are visual examples (polynomial curve fitting):
 We train model → look at error on training data and validation/test data as model gets more complex or trains longer.
 
 
-
-
-
-
+<img width="2048" height="1536" alt="p2" src="https://github.com/user-attachments/assets/bc9bb402-28f8-4cd3-93f6-fc0b878f1c24" />
 
 
 **Underfitting** (High bias):  
