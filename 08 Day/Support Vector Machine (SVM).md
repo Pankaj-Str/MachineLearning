@@ -38,6 +38,7 @@ They are the most important points — that's why the algorithm is named after t
           decision boundary
              (the line SVM chooses)
 ```
+<img width="1536" height="1024" alt="ChatGPT Image Feb 7, 2026, 07_57_46 AM" src="https://github.com/user-attachments/assets/f858b29b-487b-426b-80c0-c0d1a2c43542" />
 
 
 ### The golden rule of SVM (very important)
