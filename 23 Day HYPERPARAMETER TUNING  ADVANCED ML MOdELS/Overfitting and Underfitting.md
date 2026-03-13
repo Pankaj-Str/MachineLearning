@@ -146,7 +146,6 @@ We will create polynomial models with different degrees.
 
 ## Model 1: Underfitting (Simple Model)
 
-genui{"math_block_widget_always_prefetch_v2": {"content": "y = ax + b"}}
 
 ```python
 model_underfit = make_pipeline(
