@@ -1,4 +1,4 @@
-# SMOTE + Hyperparameter Tuning**, explained clearly
+# SMOTE + Hyperparameter Tuning
 
 ---
 
