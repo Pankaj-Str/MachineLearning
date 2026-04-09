@@ -109,7 +109,7 @@ Let’s take a very easy example with just two features (\(x_1\) and \(x_2\)):
 
 Here is a visual of real data points and the SVM decision boundary:
 
-![1XVMFi27XsG3Z3-TshhnWFQ](https://github.com/user-attachments/assets/53a1cbdb-8d8b-422f-8f3c-f54dcde0ca8e)
+<img width="992" height="598" alt="Screenshot 2026-04-09 at 8 04 52 AM" src="https://github.com/user-attachments/assets/ee5c3beb-fb17-4237-8ba4-43426ec1fe55" />
 
 
 
@@ -139,4 +139,3 @@ model.fit(X_train, y_train)
 
 Try it on simple datasets like Iris flowers — you’ll see the magic yourself.
 
-If anything is still confusing, just ask — I can explain any single part again with more pictures or even simpler words! 🎉
