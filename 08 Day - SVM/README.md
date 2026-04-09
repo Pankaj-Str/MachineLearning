@@ -84,7 +84,8 @@ Here’s what the kernel trick looks like visually:
 
 And here’s how linear vs non-linear SVM looks in practice:
 
-[Linear-vs-Non-linear-SVMs copy.tiff](https://github.com/user-attachments/files/26586678/Linear-vs-Non-linear-SVMs.copy.tiff)
+<img width="992" height="598" alt="Screenshot 2026-04-09 at 8 04 52 AM" src="https://github.com/user-attachments/assets/606e167c-3d2d-4670-88b8-5cdc5095b473" />
+
 
 
 
@@ -109,7 +110,9 @@ Let’s take a very easy example with just two features (\(x_1\) and \(x_2\)):
 
 Here is a visual of real data points and the SVM decision boundary:
 
-<img width="992" height="598" alt="Screenshot 2026-04-09 at 8 04 52 AM" src="https://github.com/user-attachments/assets/ee5c3beb-fb17-4237-8ba4-43426ec1fe55" />
+
+![1XVMFi27XsG3Z3-TshhnWFQ](https://github.com/user-attachments/assets/0f1b957c-802b-421e-a1b1-ea2857d1508e)
+
 
 
 
