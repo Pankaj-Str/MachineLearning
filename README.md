@@ -81,7 +81,7 @@ In the future, Machine Learning and AI will be used in even more areas. We are j
 ---
 
 ---------------
-# types of Machine Learning
+# Types of Machine Learning
 
 ### 1. Supervised Learning (सुपरवाइज्ड लर्निंग)
 
