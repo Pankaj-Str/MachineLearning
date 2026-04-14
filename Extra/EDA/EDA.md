@@ -1,6 +1,5 @@
-# Handling Missing Data
-
 # Exploratory Data Analysis (EDA)
+# Handling Missing Data
 
 Using the real **UCI Automobile Dataset** (1985 Auto Imports data, 205 cars).
 
