@@ -58,8 +58,8 @@ price                 4
 ```
 
 We see missing data clearly now.
-
-### Common Imputation Techniques (Explained Simply with Examples)
+----
+### Common Imputation Techniques
 
 #### 1. **Mean Imputation** (Best for numerical data with normal distribution)
 Replace missing value with the **average** of the column.
@@ -80,7 +80,7 @@ df['horsepower'].fillna(df['horsepower'].mean(), inplace=True)
 
 **When to use**: When data is symmetric (not too skewed).  
 **Caution**: Can reduce variation slightly.
-
+----
 #### 2. **Median Imputation** (Robust to outliers)
 Replace with the **middle value** when data is sorted.
 
@@ -93,7 +93,7 @@ df['price'].fillna(median_price, inplace=True)
 ```
 
 **When to use**: When there are extreme high/low values (outliers), like luxury cars.
-
+----
 #### 3. **Mode Imputation** (Best for categorical data)
 Replace with the **most frequent** value.
 
@@ -106,7 +106,7 @@ df['num-of-doors'].fillna(mode_doors, inplace=True)
 ```
 
 **When to use**: For categories like fuel-type, body-style, doors.
-
+----
 #### 4. **Group-wise Imputation** (Smarter – Recommended for EDA)
 Fill based on similar cars (e.g., same `make` or `body-style`).
 
@@ -122,7 +122,7 @@ df['price'] = df.groupby('body-style')['price'].transform(lambda x: x.fillna(x.m
 ```
 
 This keeps the data more realistic.
-
+---
 #### 5. **Forward/Backward Fill** (for sequential data – less common here)
 ```python
 df['price'].fillna(method='ffill', inplace=True)  # Use previous value
@@ -130,7 +130,7 @@ df['price'].fillna(method='ffill', inplace=True)  # Use previous value
 ```
 
 Useful if data is time-ordered, but not ideal for car specs.
-
+---
 #### 6. **Advanced: KNN Imputation** (Uses similar rows)
 It finds "similar" cars based on other features and takes their average.
 
@@ -144,7 +144,7 @@ df_numeric_imputed = pd.DataFrame(imputer.fit_transform(numeric_df), columns=num
 ```
 
 **When to use**: When you have many features and want higher accuracy (but slower).
-
+---
 ### Quick Comparison Table (Easy to Remember)
 
 | Technique       | Best For              | Example Column       | Pros                          | Cons                          |
@@ -154,7 +154,7 @@ df_numeric_imputed = pd.DataFrame(imputer.fit_transform(numeric_df), columns=num
 | Mode           | Categories           | num-of-doors        | Works for text               | Can over-represent common value |
 | Group Mean/Median | Related groups      | normalized-losses   | More accurate                | Needs a grouping column      |
 | KNN            | Complex data         | bore, stroke        | Considers all features       | Computationally heavier      |
-
+---
 ### Practical Tips for EDA on Automobile Data
 1. Always check `df.isnull().sum()` and `df.isnull().mean() * 100` (percentage).
 2. Visualize missing data:
@@ -167,8 +167,8 @@ df_numeric_imputed = pd.DataFrame(imputer.fit_transform(numeric_df), columns=num
 3. After imputation, re-check summary statistics (`df.describe()`) to see if they changed too much.
 4. Decide based on **why** data is missing (e.g., some old cars don't report normalized-losses).
 5. If too many missing (>50% in a column), sometimes better to drop the column.
-
-### Simple Code Summary (All in One)
+----
+### Simple Code Summary 
 ```python
 # Replace ? with NaN
 df.replace('?', np.nan, inplace=True)
