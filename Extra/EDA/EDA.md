@@ -456,9 +456,8 @@ You will see the number of columns increases a lot because new columns are creat
 
 ---
 
-Here's a **super simple English** explanation of **Data Scaling & Normalization** using the same **Automobile Dataset**.
 
-### What is Data Scaling / Normalization?
+# What is Data Scaling / Normalization?
 
 **Scaling** means making all the numbers in different columns **similar in range**.
 
