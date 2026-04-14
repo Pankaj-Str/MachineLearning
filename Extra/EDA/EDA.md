@@ -628,5 +628,170 @@ print("After Standardization - Price mean:", round(df_std['price'].mean(), 2))
 ```
 
 ---
+# Feature Selection & Feature Engineering
+
+### What is Feature Engineering?
+Feature Engineering means **creating new useful columns** from the existing data to help the model understand better.
+
+**Simple Analogy**:  
+You have flour, eggs, and sugar.  
+Feature Engineering is like making **cake batter** by mixing them — you create something new and better.
+
+### What is Feature Selection?
+Feature Selection means **choosing only the important columns** and removing useless or repeated ones.
+
+**Simple Analogy**:  
+You have 20 ingredients but only need 8 good ones to make a tasty cake. You select the best ones and throw away the rest.
+
+Why do we do this?
+- Makes the model **faster**
+- Reduces noise (useless data)
+- Improves accuracy
+- Prevents overfitting
+
+---
+
+### Step-by-Step: Feature Engineering (Creating New Features)
+
+Here are easy and useful new features you can create in the car dataset:
+
+1. **Power-to-Weight Ratio**  
+   (How powerful the car is compared to its weight — important for performance)
+
+   ```python
+   df['power_to_weight'] = df['horsepower'] / df['curb-weight']
+   ```
+
+2. **Average MPG** (Fuel efficiency)
+   ```python
+   df['avg_mpg'] = (df['city-mpg'] + df['highway-mpg']) / 2
+   ```
+
+3. **Engine Efficiency** (Horsepower per engine size)
+   ```python
+   df['hp_per_cc'] = df['horsepower'] / df['engine-size']
+   ```
+
+4. **Car Size / Volume** (Approximate size of the car)
+   ```python
+   df['car_volume'] = df['length'] * df['width'] * df['height']
+   ```
+
+5. **Price per Unit Weight** (Sometimes useful)
+   ```python
+   df['price_per_weight'] = df['price'] / df['curb-weight']
+   ```
+
+**Real Example from Car Data**:
+- A heavy car with low horsepower will have **low power_to_weight** → cheaper or less sporty.
+- Cars with high `avg_mpg` are more fuel-efficient.
+
+These new features often help predict **price** much better.
+
+---
+
+### Step-by-Step: Feature Selection (Choosing Important Features)
+
+#### Easy Ways to Select Good Features:
+
+**Method 1: Correlation (Simplest)**
+Check which columns are strongly related to **price**.
+
+```python
+# Correlation with price
+corr = df.corr(numeric_only=True)['price'].sort_values(ascending=False)
+print(corr)
+```
+
+**Typical Results in this dataset**:
+- `engine-size` → very high positive correlation
+- `curb-weight` → high
+- `horsepower` → high
+- `width`, `length` → medium
+- `city-mpg`, `highway-mpg` → negative correlation (higher mpg → lower price usually)
+
+You can keep features with |correlation| > 0.5 or 0.6.
+
+**Method 2: Using a Model (Random Forest Importance) — Very Popular**
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+# After encoding categorical columns and scaling
+X = df.drop('price', axis=1)   # all features
+y = df['price']
+
+model = RandomForestRegressor()
+model.fit(X, y)
+
+importance = pd.Series(model.feature_importances_, index=X.columns)
+importance = importance.sort_values(ascending=False)
+
+print(importance.head(10))   # Top 10 most important features
+```
+
+In car data, top features are usually:
+- engine-size
+- curb-weight
+- horsepower
+- car_volume (if you created it)
+- drive-wheels (after encoding)
+
+**Method 3: Remove Highly Correlated Features (Redundant)**
+If two features are very similar (e.g., `city-mpg` and `highway-mpg` are highly correlated), keep only one.
+
+```python
+# Simple way to drop one
+df = df.drop('city-mpg', axis=1)   # keep highway-mpg or avg_mpg
+```
+
+---
+
+### Full Easy Code Example (Combined)
+
+```python
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+
+# Load data (same as before)
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-85.data"
+columns = ['symboling', 'normalized-losses', 'make', ... , 'price']  # full list
+df = pd.read_csv(url, names=columns, na_values='?')
+
+# Quick cleaning
+df['price'] = pd.to_numeric(df['price'], errors='coerce')
+df['horsepower'] = pd.to_numeric(df['horsepower'], errors='coerce')
+df['price'].fillna(df['price'].median(), inplace=True)
+df['horsepower'].fillna(df['horsepower'].median(), inplace=True)
+
+# === Feature Engineering ===
+df['power_to_weight'] = df['horsepower'] / df['curb-weight']
+df['avg_mpg'] = (df['city-mpg'] + df['highway-mpg']) / 2
+df['hp_per_cc'] = df['horsepower'] / df['engine-size']
+df['car_volume'] = df['length'] * df['width'] * df['height']
+
+# One-Hot Encoding for categorical columns
+df = pd.get_dummies(df, columns=['make', 'fuel-type', 'body-style', 'drive-wheels'], drop_first=True)
+
+# === Feature Selection using Correlation ===
+corr_with_price = df.corr(numeric_only=True)['price'].abs().sort_values(ascending=False)
+print("Top correlated features:\n", corr_with_price.head(15))
+
+# Or using Random Forest
+X = df.drop('price', axis=1)
+y = df['price']
+
+rf = RandomForestRegressor(random_state=42)
+rf.fit(X, y)
+
+feat_importance = pd.Series(rf.feature_importances_, index=X.columns).sort_values(ascending=False)
+print("Top important features:\n", feat_importance.head(10))
+
+# Final selected features (example)
+selected_features = ['engine-size', 'curb-weight', 'horsepower', 'power_to_weight', 
+                     'avg_mpg', 'car_volume'] + [col for col in df.columns if col.startswith('drive_wheels')]
+```
+
+---
+
 
 
