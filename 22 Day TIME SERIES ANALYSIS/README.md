@@ -189,12 +189,7 @@ model.plot(forecast)
 plt.show()
 ```
 
-----
-
-# Complete example 
-
-'''python 
-
+```python
 # ================================================
 # Beginner Time Series Analysis Example in Python
 # ================================================
@@ -217,5 +212,166 @@ sns.set_palette("husl")
 plt.rcParams['figure.figsize'] = (12, 6)
 
 print("✅ Libraries imported successfully!")
-'''
+```
+
+```python
+# Step 3: Create a Sample Time Series Dataset
+# We'll create synthetic monthly sales data with trend + seasonality + noise
+
+np.random.seed(42)  # For reproducibility
+
+# Date range: 3 years of monthly data
+dates = pd.date_range(start='2022-01-01', end='2024-12-31', freq='ME')
+
+# Create synthetic sales data
+base_trend = np.linspace(100, 200, len(dates))           # Upward trend
+seasonality = 30 * np.sin(2 * np.pi * np.arange(len(dates)) / 12)  # Yearly seasonality
+noise = np.random.normal(0, 15, len(dates))              # Random noise
+
+sales = base_trend + seasonality + noise
+
+# Create DataFrame
+df = pd.DataFrame({
+    'Date': dates,
+    'Sales': sales
+})
+
+# Set Date as index (very important for time series)
+df.set_index('Date', inplace=True)
+
+print("✅ Dataset created!")
+print(df.head())
+print(f"\nShape: {df.shape}")
+```
+
+```python
+# Step 4: Basic Visualization
+plt.figure(figsize=(14, 7))
+
+plt.plot(df.index, df['Sales'], marker='o', linestyle='-', color='blue', label='Monthly Sales')
+plt.title('Monthly Sales Data (2022-2024)', fontsize=16)
+plt.xlabel('Date')
+plt.ylabel('Sales')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# Quick statistics
+print(df['Sales'].describe())
+```
+
+```python
+# Step 5: Resampling (Change frequency)
+# Monthly to Quarterly
+quarterly = df['Sales'].resample('QE').mean()
+
+plt.figure(figsize=(12, 5))
+plt.plot(df.index, df['Sales'], label='Monthly', alpha=0.6)
+plt.plot(quarterly.index, quarterly, marker='o', linewidth=3, label='Quarterly Average')
+plt.title('Monthly vs Quarterly Sales')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+```python
+# Step 6: Rolling Statistics (Moving Average)
+df['MA_3'] = df['Sales'].rolling(window=3).mean()   # 3-month moving average
+df['MA_6'] = df['Sales'].rolling(window=6).mean()   # 6-month moving average
+
+plt.figure(figsize=(14, 7))
+plt.plot(df.index, df['Sales'], label='Original Sales', alpha=0.7)
+plt.plot(df.index, df['MA_3'], label='3-Month MA', linewidth=2)
+plt.plot(df.index, df['MA_6'], label='6-Month MA', linewidth=2)
+plt.title('Sales with Moving Averages')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+```python
+# Step 7: Check Stationarity (Augmented Dickey-Fuller Test)
+
+def check_stationarity(timeseries):
+    print("=== Augmented Dickey-Fuller Test ===")
+    result = adfuller(timeseries)
+    print(f'ADF Statistic: {result[0]:.4f}')
+    print(f'p-value: {result[1]:.4f}')
+    
+    if result[1] <= 0.05:
+        print("✅ Stationary (Reject null hypothesis)")
+    else:
+        print("❌ Non-stationary (Fail to reject null hypothesis)")
+    
+    print(f'Critical Values: {result[4]}')
+
+check_stationarity(df['Sales'])
+```
+
+```python
+# Step 8: Time Series Decomposition
+decomposition = seasonal_decompose(df['Sales'], model='additive', period=12)
+
+fig = decomposition.plot()
+fig.set_size_inches(14, 10)
+plt.suptitle('Time Series Decomposition', fontsize=16)
+plt.tight_layout()
+plt.show()
+
+print("Decomposition helps us separate Trend + Seasonality + Residual")
+```
+
+```python
+# Step 9: Simple Forecasting with ARIMA
+# For beginners: ARIMA(p,d,q)
+# p = autoregression, d = differencing, q = moving average
+
+# Train on first 80% data
+train_size = int(len(df) * 0.8)
+train = df['Sales'][:train_size]
+test = df['Sales'][train_size:]
+
+# Fit ARIMA model (you can tune these parameters)
+model = ARIMA(train, order=(2, 1, 2))  # Example order
+model_fit = model.fit()
+
+print(model_fit.summary().tables[1])  # Show coefficients
+```
+
+```python
+# Step 10: Make Predictions
+forecast = model_fit.forecast(steps=len(test))
+
+# Plot actual vs forecast
+plt.figure(figsize=(14, 7))
+plt.plot(train.index, train, label='Training Data')
+plt.plot(test.index, test, label='Actual Test Data', color='blue')
+plt.plot(test.index, forecast, label='Forecast', color='red', linestyle='--')
+plt.title('ARIMA Forecast vs Actual')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Calculate error
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+mae = mean_absolute_error(test, forecast)
+print(f"Mean Absolute Error: {mae:.2f}")
+```
+
+### Key Takeaways for Beginners:
+
+1. **Always set Date as index** with `df.set_index('Date')`
+2. **Visualize first** — time series is all about patterns over time
+3. **Check Stationarity** before modeling
+4. **Decomposition** reveals hidden patterns (trend + seasonality)
+5. Start simple (Moving Average → ARIMA → Prophet/LSTM later)
+
+### Next Steps to Learn:
+- Try real datasets (`pandas_datareader`, Kaggle sales data)
+- Use `auto_arima` from `pmdarima`
+- Try Facebook Prophet for easier seasonal modeling
+- Learn ACF/PACF plots for parameter selection
+
+
 
