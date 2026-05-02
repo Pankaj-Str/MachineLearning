@@ -1,4 +1,4 @@
-### Time Series Analysis
+# Time Series Analysis
 
 **Introduction to Time Series Analysis**
 
@@ -188,7 +188,7 @@ forecast = model.predict(future)
 model.plot(forecast)
 plt.show()
 ```
-
+# Example - Complete
 ```python
 # ================================================
 # Beginner Time Series Analysis Example in Python
