@@ -189,3 +189,33 @@ model.plot(forecast)
 plt.show()
 ```
 
+----
+
+# Complete example 
+
+'''python 
+
+# ================================================
+# Beginner Time Series Analysis Example in Python
+# ================================================
+
+# Step 1: Install libraries (run once if needed)
+# !pip install pandas numpy matplotlib seaborn statsmodels
+
+# Step 2: Import required libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.arima.model import ARIMA
+
+# Set style for better plots
+plt.style.use('seaborn-v0_8')
+sns.set_palette("husl")
+plt.rcParams['figure.figsize'] = (12, 6)
+
+print("✅ Libraries imported successfully!")
+'''
+
