@@ -105,7 +105,7 @@ Area             →     Rent
 
 ----
 
-# Linear Regression code** using Python and `scikit-learn`:
+# Linear Regression code using Python and `scikit-learn`:
 
 ```python
 import numpy as np
