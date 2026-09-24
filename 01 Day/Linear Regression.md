@@ -102,3 +102,87 @@ Area             →     Rent
 ### One-line definition for your lecture
 
 > **Linear Regression is a supervised machine learning algorithm that learns the relationship between input and continuous output variables and uses that relationship to make predictions.**
+
+----
+
+# Linear Regression code** using Python and `scikit-learn`:
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Training data
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([2, 4, 5, 8, 10])
+
+# Create model
+model = LinearRegression()
+
+# Train the model
+model.fit(X, y)
+
+# Make prediction
+prediction = model.predict([[6]])
+
+print("Predicted value:", prediction[0])
+
+# Model parameters
+print("Intercept:", model.intercept_)
+print("Slope:", model.coef_[0])
+```
+
+### Simple explanation
+
+```python
+model = LinearRegression()
+```
+
+Creates the Linear Regression model.
+
+```python
+model.fit(X, y)
+```
+
+The model **learns the relationship** between `X` and `y`.
+
+```python
+model.predict([[6]])
+```
+
+Now we give a **new value `6`**, and the model predicts its corresponding `y`.
+
+### With graph
+
+If you want to show students how the **data points + regression line** look:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Data
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([2, 4, 5, 8, 10])
+
+# Model
+model = LinearRegression()
+model.fit(X, y)
+
+# Prediction
+y_pred = model.predict(X)
+
+# Plot data points
+plt.scatter(X, y)
+
+# Plot regression line
+plt.plot(X, y_pred)
+
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Linear Regression")
+
+plt.show()
+```
+
+The **dots are actual data**, and the **straight line is the line learned by Linear Regression**.
+
